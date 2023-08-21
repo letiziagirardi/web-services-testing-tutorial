@@ -129,13 +129,13 @@ The steps to do for using them are the following:
 ### **Create an app**
 
 To obtain an access token via the implemented authorization flows, you'll need to create an app. Here's how:
-* Access your Dashboard and click "Create an app."
+* Access your Dashboard and click `Create an app.`
 * Fill in the details:
    - App Name: My App
    - App Description: This is my first Spotify app
    - Redirect URI: Use http://localhost:3000 for now (not required in this example).
 * Make sure to agree to the Developer Terms of Service.
-* Click "Create."
+* Click `Create.`
 
 ### **Request an access token**
 An access token functions as a string containing essential credentials and permissions, providing the means to access specific resources (such as artists, albums, or tracks) or a user's data (like profiles or playlists).
@@ -145,7 +145,7 @@ To initiate the access token request, you'll require your Client ID and Client S
 * Head over to the Dashboard.
 * Click on the name of your freshly created app (My App).
 * Opt for the Settings button.
-* Your Client ID is displayed here, while your Client Secret is accessible via the "View client secret" link.
+* Your Client ID is displayed here, while your Client Secret is accessible via the `View client secret` link.
 
 With our credentials in hand, we are ready to request an access token. This tutorial uses the Client Credentials, so we must:
 * Send a POST request to the token endpoint URI.
@@ -155,37 +155,65 @@ With our credentials in hand, we are ready to request an access token. This tuto
 ### Obtain an Access Token
 With our credentials in hand, we are ready to request an access token. This tutorial uses the Client Credentials, so we must:
 - Send a POST request to the token endpoint URI.
-   - Choose "POST" from the dropdown menu next to the URL bar.
+   - Choose `POST` from the dropdown menu next to the URL bar.
    - Enter the URL: `https://accounts.spotify.com/api/token`.
 - Add the Content-Type header set to the application/x-www-form-urlencoded value.
-   - In the Params section, click on the "Key" column and enter `Content-Type`.
-   - In the "Value" column, enter `application/x-www-form-urlencoded`.
-    ![Parameters](https://github.com/letiziagirardi/web-services-testing-tutorial/assets/71395970/cfd53896-739e-4e6c-953b-b17867c7ab39)
+   - In the Params section, click on the `Key` column and enter `Content-Type`.
+   - In the `Value` column, enter `application/x-www-form-urlencoded`.
+
+![Params](https://github.com/letiziagirardi/web-services-testing-tutorial/assets/71395970/7b245086-6eb5-4be3-905f-efc0978f2b93)
 
 - Add a HTTP body containing the Client ID and Client Secret, along with the grant_type parameter set to client_credentials.
-   - Select "x-www-form-urlencoded" as the body type.
+   - Select `x-www-form-urlencoded` as the body type.
    - Add the following parameters:
      - Key: `grant_type`, Value: `client_credentials`
      - Key: `client_id`, Value: `your-client-id`
      - Key: `client_secret`, Value: `your-client-secret`
 
    Replace `your-client-id` and `your-client-secret` with your actual Spotify app's Client ID and Client Secret.
-  ![Body](https://github.com/letiziagirardi/web-services-testing-tutorial/assets/71395970/543dcee0-5ca7-4227-a86a-01f22b8f6f30)
+![Body](https://github.com/letiziagirardi/web-services-testing-tutorial/assets/71395970/c6da81ff-3db3-429a-b564-98acb44963dd)
 
 When you successfully request an access token using the Client Credentials flow, the response will look like this:
 
 ```json
 {
-    "access_token": "BQDkQvl8qHTViptgh1xpCT0bn0ASbUk4l4kwwVKy-FInkwZm6y06CK9e6tyjPLi1-MC5QraAfViX4d_CLujlSap99Q8Xv1OT1S_qKGiEDvYXC9anEKw",
-    "token_type": "Bearer",
-    "expires_in": 3600
+    `access_token`: `BQDkQvl8qHTViptgh1xpCT0bn0ASbUk4l4kwwVKy-FInkwZm6y06CK9e6tyjPLi1-MC5QraAfViX4d_CLujlSap99Q8Xv1OT1S_qKGiEDvYXC9anEKw`,
+    `token_type`: `Bearer`,
+    `expires_in`: 3600
 }
 ```
 The response will return an access token valid for 1 hour.
 
+Once the token has been obtained, we can proceed with our tutorial by creating a Collection and some variables where save the more usefull requests and information.
+Creating a collection in Postman is a fundamental step in organizing and managing your API requests. A collection is a container that holds a group of requests, allowing you to efficiently organize, execute, and maintain your API tests. Here's how to create a collection in Postman:
 
+1. **Collections Tab:** In the left sidebar, click on the `Collections` tab. This is where you'll manage your collections.
 
+2. **Create New Collection:** At the top of the `Collections` tab, you'll see a `New` button. Click on it to create a new collection.
 
+3. **Name and Description:** A window will pop up prompting you to enter a name and an optional description for your collection. Provide a meaningful name that reflects the purpose of the collection.
 
+4. **Add Requests to the Collection:** Once your collection is created, you can start adding requests to it. To do this, you can:
 
+   - Create new requests directly within the collection.
+   - Import requests from other sources like URLs or cURL commands.
+   - Duplicate existing requests and modify them as needed.
+
+   To add a request:
+   
+   - Click on the collection you created.
+   - Click the `Add a request` button within the collection.
+   - Give the request a name and specify the HTTP method, URL, headers, parameters, and body as required.
+
+5. **Save and Use:** Make sure to save your collection and your requests. You can now use this collection to execute requests, organize your API testing workflow, and collaborate with others.
+![Collection](https://github.com/letiziagirardi/web-services-testing-tutorial/assets/71395970/edc179fb-3644-4ff7-824b-e7ba4b1975a4)
+
+To create and use a variable, instead, do the following:
+
+1. Click on the environment quick look icon located in the workbench.
+2. Next to `Globals`, click on the `Edit` button (or `Add` if no variables are added yet).
+3. Create a variable named `token` and type the value of the obtained token.
+4. Click the `Save` icon, then close the environment tab.
+
+In the URL field, you can use variables by using this syntax: {{name_variable}}. For example, if we save the base URL `https://api.spotify.com/v1/` into the variable `baseUrl`, we can use it like this: {{baseUrl}}/endpoint.
 
