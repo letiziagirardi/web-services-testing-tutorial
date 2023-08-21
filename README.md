@@ -152,12 +152,35 @@ With our credentials in hand, we are ready to request an access token. This tuto
 * Add the Content-Type header set to the application/x-www-form-urlencoded value.
 * Add a HTTP body containing the Client ID and Client Secret, along with the grant_type parameter set to client_credentials.
 
-# Obtain an Access Token
+### Obtain an Access Token
 With our credentials in hand, we are ready to request an access token. This tutorial uses the Client Credentials, so we must:
 - Send a POST request to the token endpoint URI.
+   - Choose "POST" from the dropdown menu next to the URL bar.
+   - Enter the URL: `https://accounts.spotify.com/api/token`.
 - Add the Content-Type header set to the application/x-www-form-urlencoded value.
-- Add a HTTP body containing the Client ID and Client Secret, along with the grant_type parameter set to client_credentials.
+   - In the Params section, click on the "Key" column and enter `Content-Type`.
+   - In the "Value" column, enter `application/x-www-form-urlencoded`.
+    ![Parameters](https://github.com/letiziagirardi/web-services-testing-tutorial/assets/71395970/cfd53896-739e-4e6c-953b-b17867c7ab39)
 
+- Add a HTTP body containing the Client ID and Client Secret, along with the grant_type parameter set to client_credentials.
+   - Select "x-www-form-urlencoded" as the body type.
+   - Add the following parameters:
+     - Key: `grant_type`, Value: `client_credentials`
+     - Key: `client_id`, Value: `your-client-id`
+     - Key: `client_secret`, Value: `your-client-secret`
+
+   Replace `your-client-id` and `your-client-secret` with your actual Spotify app's Client ID and Client Secret.
+  ![Body](https://github.com/letiziagirardi/web-services-testing-tutorial/assets/71395970/543dcee0-5ca7-4227-a86a-01f22b8f6f30)
+
+When you successfully request an access token using the Client Credentials flow, the response will look like this:
+
+```json
+{
+    "access_token": "BQDkQvl8qHTViptgh1xpCT0bn0ASbUk4l4kwwVKy-FInkwZm6y06CK9e6tyjPLi1-MC5QraAfViX4d_CLujlSap99Q8Xv1OT1S_qKGiEDvYXC9anEKw",
+    "token_type": "Bearer",
+    "expires_in": 3600
+}
+```
 The response will return an access token valid for 1 hour.
 
 
