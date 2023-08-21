@@ -1,39 +1,5 @@
 # Using and Testing Web Services - Tutorial
 
-## What you will learn:
-- Introduction
-  - Briefly introduce the importance of web services in modern software development.
-  - Highlight the goals of the tutorial: understanding, using, and testing web services.
-- Understanding Web Services
-  - What are web services?
-  - Types of web services: SOAP, REST, GraphQL, etc.
-  - Benefits of using web services in applications.
-- Setting Up Environment
-  - Tools you'll need: Postman, browser extensions, etc.
-  - Installing and configuring Postman for API testing.
-- Making Your First Web Service Request
-  - Sending a GET request to a sample RESTful API using Postman.
-  - Interpreting the response: status codes, headers, and body.
-- Working with Request Payloads
-  - Sending a POST request with JSON payload.
-  - Handling POST responses and data.
-- Handling Authentication
-  - Basic Authentication
-  - API keys and tokens
-  - OAuth2 for secure access
-- Error Handling in Web Services
-  - Understanding common HTTP error codes.
-  - How to handle errors in your application.
-- Testing Web Services
-  - Why test web services?
-  - Unit testing web service components
-  - Functional testing with API endpoints
-- Postman for Automated Testing
-  - Writing test scripts in Postman
-  - Creating test assertions for API responses
-  - Running automated test suites
-- Conclusion
-  - Recap the key points covered in the tutorial.
 
 ---
 
@@ -69,18 +35,6 @@ Web services are protocols and standards that enable applications to communicate
   - **Global Accessibility:** Web services can be accessed over the internet, enabling global connectivity.
 
 ---
-
-## Setting Up Environment
-
-Before you start testing APIs with Postman, you'll need to set up your environment. Here's what you need to do:
-
-- **Installing and Configuring Postman:**
-  1. **Download and Install:** Go to the [Postman download page](https://www.postman.com/downloads/) and choose the version suitable for your operating system. Install it by following the on-screen instructions.
-
-  2. **Sign Up/Login:** Once installed, open Postman. You can sign up for a free account or log in if you already have one. This allows you to sync your work across devices. Postman simplifies API testing by providing a user-friendly interface and a range of features that help you understand and interact with APIs effectively.
-
-- **Installing a Web Browser:** In order to correctly test APIs, download a Web Browser such as Google Chrome
- ---
 
 **Understanding REST in Communication**
 
@@ -119,20 +73,92 @@ In this symbiotic communication between clients and servers, the language of HTT
 
 ![Http Status Error](https://static.semrush.com/blog/uploads/media/3a/79/3a7950050980a0e2de37bc1a632cc321/original.png)
 
+---
 
 
 
+In this tutorial, we will be using Postman because it is a powerful and widely used API testing tool that provides a user-friendly interface, allowing easy sending of HTTP requests and testing of APIs. 
 
+Postman allows us to cover various aspects of the testing process:
 
+1. **Request Generation:** Postman lets you create requests with different HTTP methods (GET, POST, PUT, DELETE, etc.), headers, query parameters, and request bodies. This flexibility is essential for testing various scenarios and endpoints of an API.
 
+2. **Data-Driven Testing:** Postman allows you to parameterize your requests using variables, making it easy to test multiple scenarios by changing input values without rewriting requests.
 
+3. **Response Inspection:** You can view API responses, including response codes, headers, and formatted response bodies. This helps in quickly identifying issues and verifying correctness.
 
+4. **Authentication Testing:** Postman supports a wide range of authentication methods, including basic authentication, API keys, OAuth 2.0, and more. You can simulate different authentication scenarios during testing.
 
+5. **Automation and Testing Suites:** Postman enables you to write tests using JavaScript, validating the responses automatically. This is crucial for regression testing and ensuring consistent behavior across API changes.
 
+6. **Collection and Environment Management:** You can organize your requests into collections, helping you manage and group related requests. Environments allow you to manage different sets of variables for different testing environments.
 
+7. **Integration and Collaboration:** Postman provides features for sharing collections and collaborating with team members, streamlining the testing process in a collaborative environment.
 
+But, what is API testing meaning for?
+**API testing** is the process of evaluating an Application Programming Interface (API) to ensure it functions correctly, integrates smoothly with other systems, handles errors, maintains data integrity, and performs well under different conditions. This type of testing confirms that APIs meet their design specifications and work reliably within software applications. It involves validating functionality, security, performance, and compatibility, ultimately contributing to the quality and dependability of the software systems that rely on these APIs. APIs are crucial components of modern software development, as they enable different software systems to communicate and interact. APIs are fundamental to modern software development, enabling developers to build complex applications by leveraging the capabilities of various components and services without having to build everything from scratch. They play a crucial role in promoting interoperability and innovation in the technology landscape.
 
+In summary, API testing ensures the reliability, functionality, security, and performance of APIs, contributing to the overall quality and stability of software systems that rely on them.
 
+---
+## **Making Your First HTTP Request**
+
+In this tutorial we will use Spotify's open-source API to demonstrate the CRUD operations. CRUD stands for Create, Read, Update and Delete. 
+- Create : (Post) Used to create a new resource, but can also modify the underlying state of a system.
+- Read : (Get) Used to retrieve a representation of the resource.
+- Update : (Put/Patch) Update an existing resource.
+- Deleted : (Delete) Delete a resource.
+
+## Prerequisites 
+* **Installing a Web Browser:** In order to correctly test APIs, download a Web Browser such as Google Chrome
+* **Creating a Spotify account:** This tutorial assumes you have a Spotify account (free or premium).
+* **Installing and Configuring Postman:** Here's what you need to do for installing the API testing platform Postman:
+
+  1. **Download and Install:** Go to the [Postman download page](https://www.postman.com/downloads/) and choose the version suitable for your operating system. Install it by following the on-screen instructions.
+
+  2. **Sign Up/Login:** Once installed, open Postman. You can sign up for a free account or log in if you already have one. This allows you to sync your work across devices. Postman simplifies API testing by providing a user-friendly interface and a range of features that help you understand and interact with APIs effectively.
+
+---
+
+To use these APIs we need to get a user ID and OAuth token. 
+The steps to do for using them are the following:
+- Create an app, if you haven't done so.
+- Request an access token.
+- Use the access token to request the artist data.
+  
+### **Create an app**
+
+To obtain an access token via the implemented authorization flows, you'll need to create an app. Here's how:
+* Access your Dashboard and click "Create an app."
+* Fill in the details:
+   - App Name: My App
+   - App Description: This is my first Spotify app
+   - Redirect URI: Use http://localhost:3000 for now (not required in this example).
+* Make sure to agree to the Developer Terms of Service.
+* Click "Create."
+
+### **Request an access token**
+An access token functions as a string containing essential credentials and permissions, providing the means to access specific resources (such as artists, albums, or tracks) or a user's data (like profiles or playlists).
+
+To initiate the access token request, you'll require your Client ID and Client Secret. Here's how you can retrieve them:
+
+* Head over to the Dashboard.
+* Click on the name of your freshly created app (My App).
+* Opt for the Settings button.
+* Your Client ID is displayed here, while your Client Secret is accessible via the "View client secret" link.
+
+With our credentials in hand, we are ready to request an access token. This tutorial uses the Client Credentials, so we must:
+* Send a POST request to the token endpoint URI.
+* Add the Content-Type header set to the application/x-www-form-urlencoded value.
+* Add a HTTP body containing the Client ID and Client Secret, along with the grant_type parameter set to client_credentials.
+
+# Obtain an Access Token
+With our credentials in hand, we are ready to request an access token. This tutorial uses the Client Credentials, so we must:
+- Send a POST request to the token endpoint URI.
+- Add the Content-Type header set to the application/x-www-form-urlencoded value.
+- Add a HTTP body containing the Client ID and Client Secret, along with the grant_type parameter set to client_credentials.
+
+The response will return an access token valid for 1 hour.
 
 
 
