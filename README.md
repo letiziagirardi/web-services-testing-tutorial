@@ -175,7 +175,7 @@ With our credentials in hand, we are ready to request an access token. This tuto
 
 When you successfully request an access token using the Client Credentials flow, the response will look like this:
 
-```json
+```
 {
     `access_token`: `BQDkQvl8qHTViptgh1xpCT0bn0ASbUk4l4kwwVKy-FInkwZm6y06CK9e6tyjPLi1-MC5QraAfViX4d_CLujlSap99Q8Xv1OT1S_qKGiEDvYXC9anEKw`,
     `token_type`: `Bearer`,
