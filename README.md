@@ -193,13 +193,13 @@ WIn Postman, when you send requests to APIs, you might encounter different types
 4. **Other Codes (1xx, 3xx):** Less frequent, these codes in the `1xx` and `3xx` range have distinct roles in communication and redirection scenarios.
 
 ---
-Let's try by yourself.
+Try it yourself.
 
-## EXERCISE 1: **List Books:**
+### EXERCISE 1: **List Books:**
 Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to retrieve the list of available books.
 
 
-## EXERCISE 2: **List Books:**
+### EXERCISE 2: **List Books:**
 Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to view detailed information about the book with id = 2.
 
 Users should have the option to filter the list based on the type of books (fiction or non-fiction) and limit the number of books displayed.
