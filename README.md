@@ -157,22 +157,49 @@ In order to use these APIs we need to get an access token. An access token funct
 
 1. **Create a New POST Request:**
    - In the request tab, you can provide a suitable name for your request, such as "API Client Registration."
-   - Select the HTTP method as "POST."
+   - Select the HTTP method as "POST". We will see the POST method in more detail later on.
 3. **Set the Request URL:**
    - Enter the URL for the API endpoint: `{{baseUrl}}/api-clients/`.
 4. **Add Request Body:**
    - In the request tab, select the "Body" tab below the URL field.
    - Choose the "raw" option and select "JSON" from the dropdown.
    - Copy and paste the example JSON body you provided earlier into the text area:
-     ```
-     {
-       "clientName": "your-clientName",
-       "clientEmail": "your-email@example.com"
-     }
-     ```
+```
+{
+  "clientName": "your-clientName",
+  "clientEmail": "your-email@example.com"
+}
+```
 Upon successful registration, the response will provide an access token. This token remains valid for a period of 7 days.
 
-Once the token has been obtained, we can proceed with our tutorial 
+With the acquired tokend, we're ready to delve into our tutorial. To initiate, let's execute a GET request to the `/status` endpoint.This will help us learn how to perform GET requests and check the current status of the API. 
+
+1. **Create a New Request:**
+   - Select the HTTP method as "GET."
+
+2. **Set the Request URL:**
+   - Enter the URL for the API endpoint you want to query. In this case, it's `{{baseUrl}}/status`.
+  
+If the request succeded, we get the status of the API. At this point, it is important to understand the response from the server.
+
+WIn Postman, when you send requests to APIs, you might encounter different types of responses, including success responses and error responses. These responses are accompanied by status codes, which are standardized numerical codes that provide information about the outcome of the request. Status codes help you understand whether your request was successful or encountered an issue. Here's a brief overview of status codes in Postman:
+
+1. **Success Response (2xx):** Receiving a `2xx` code (e.g., `200 OK`) denotes a successful request. You'll often find your anticipated data in the response body.
+
+2. **Client Error (4xx):** A `4xx` code (e.g., `404 Not Found`) signifies a client-side glitch. It might mean the sought-after resource is absent (`404`), or authentication is lacking (`401 Unauthorized`).
+
+3. **Server Error (5xx):** A `5xx` code (e.g., `500 Internal Server Error`) signals server-side issues. These could stem from misconfigured settings or backend snags.
+
+4. **Other Codes (1xx, 3xx):** Less frequent, these codes in the `1xx` and `3xx` range have distinct roles in communication and redirection scenarios.
+
+---
+Let's try by yourself.
+
+## EXERCISE 1: **List Books:**
+Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to retrieve the list of available books.
 
 
+## EXERCISE 2: **List Books:**
+Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to view detailed information about the book with id = 2.
 
+Users should have the option to filter the list based on the type of books (fiction or non-fiction) and limit the number of books displayed.
