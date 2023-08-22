@@ -199,7 +199,5 @@ Try it yourself.
 Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to retrieve the list of available books.
 
 
-### EXERCISE 2: **List Books:**
+### EXERCISE 2: **Info Book:**
 Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to view detailed information about the book with id = 2.
-
-Users should have the option to filter the list based on the type of books (fiction or non-fiction) and limit the number of books displayed.
