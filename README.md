@@ -5,7 +5,7 @@
 # **Web services**
 Web services are a fundamental component of modern software architecture that enable different applications or systems to communicate and share data over the internet. They serve as a bridge between various platforms, allowing them to interact with each other regardless of the technologies they are built upon. Web services play a crucial role in enabling interoperability and data exchange in distributed computing environments.
 
-## **Here are some key characteristics for understanding web services:**
+Here are some key characteristics for understanding web services:
  
 * **Interoperability:** Web services are designed to work across different programming languages, operating systems, and platforms. This means that applications written in different technologies can communicate seamlessly through web services.
 
@@ -20,7 +20,6 @@ Web services are a fundamental component of modern software architecture that en
   * _REST (Representational State Transfer):_ REST is an architectural style that uses standard HTTP methods (GET, POST, PUT, DELETE) to communicate with resources represented by URLs. It's known for its simplicity and scalability.
   * _GraphQL:_ GraphQL is a query language for APIs that allows clients to request specific data, reducing over-fetching or under-fetching of information.
 
- 
 ## **Why should we use Web Services in Applications?**
   Web services offer several advantages in modern software development:
   * **Interoperability:** Different applications can communicate seamlessly, regardless of their technology stack.
