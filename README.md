@@ -151,9 +151,9 @@ In the URL field, you can use variables by using this syntax: {{name_variable}}.
 
 ---
 
-Numerous APIs come with a subscription fee, thus, acquiring a personal key or token is essential to gain access. Typically, this key is included as a query parameter in your interactions with the server. 
+Many APIs require a subscription fee, making it crucial to obtain a personal key or token to access them. Usually, this key is added as a query parameter when interacting with the server.
 
-In order to use these APIs we need to get an access token. An access token functions is a string containing essential credentials and permissions, providing the means to access specific resources. To get the access token, the user authentication is required. Here's how you can retrieve it:
+To utilize these APIs, an access token is necessary. An access token is a string that holds vital credentials and permissions, enabling access to specific resources. The process of obtaining an access token involves user authentication. This authentication is carried out using a POST request, which typically includes login details like username and email in the request body. Through this process, an access token is acquired, enabling subsequent requests for specific resources. Here's how you can retrieve it:
 
 1. **Create a New POST Request:**
    - In the request tab, you can provide a suitable name for your request, such as "API Client Registration."
@@ -198,6 +198,82 @@ Try it yourself.
 ### EXERCISE 1: **List Books:**
 Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to retrieve the list of available books.
 
+---
 
-### EXERCISE 2: **Info Book:**
-Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to view detailed information about the book with id = 2.
+**Understanding and Utilizing Path Parameters in URLs**
+
+Path parameters are a powerful tool for creating dynamic and precise URLs that help you access specific resources. They are variable segments within the path of a URL that enable you to pass dynamic values that act as identifiers for specific resources. 
+
+To set up a path parameter, you use key-value pairs directly within the URL path. Suppose you are working with an API that provides information about books, and you want to retrieve details about a specific book using its unique ID. Here's how you would structure the URL with a path parameter:
+```
+https://example-book-api.com/books/:bookID
+```
+
+In practical terms, this means replacing `:bookID` with the actual ID value when crafting your request.
+
+Working with path parameters becomes remarkably seamless when using tools such as Postman. The process involves effortlessly integrating the parameters into your request URL and replacing them with the appropriate corresponding values.
+
+It's crucial to use the correct path parameter values. If you use the wrong value or format, the server will respond with a "404: Not Found" error. This is because the server cannot locate the resource you're trying to access.
+
+Now, let's put this knowledge into action with an exercise.
+
+### **Exercise 2: Exploring Book Information**
+
+Refer to the [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md) try to retrieve detailed information about the book with the ID of 2.
+
+--
+
+**Query Parameters:**
+
+Query parameters are additional details you can attach to a URL in Postman. They're key-value pairs that come after a question mark (`?`) in the URL. These parameters customize your API requests by providing extra information to the server.
+
+**How to Use Them in Postman:**
+Assuming you're working with the Book API and you want to retrieve a list of books based on different filters.
+
+1. **Open Postman:**
+   Launch Postman and either create a new request or open an existing one.
+
+2. **Select the "Params" Tab:**
+   In the request window, click on the "Params" tab located below the URL field.
+
+3. **Add Query Parameters:**
+   In the "Params" tab, you'll see two columns: "Key" and "Value". Here's how you might add query parameters for filtering books:
+   - **Key:** genre
+     **Value:** thriller
+   - **Key:** author
+     **Value:** Stephen King
+
+   You can continue adding more parameters as needed.
+
+4. **Review URL:**
+   As you add the query parameters, observe that the URL in the main URL field automatically updates to include the parameters. It should look something like:
+   ```
+   https://example-book-api.com/books?genre=thriller&author=Stephen%20King
+   ```
+Note that spaces are automatically encoded as `%20` to ensure proper formatting.
+
+---
+Try it yourself.
+
+### EXERCISE 3: **List Books:**
+Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to retrieve the list of available books of non-fiction genre.
+
+---
+
+To conclude, we can send data, such as JSON or form data, to the server by adding a request body to the request. This is often used in HTTP methods like POST, PUT, and PATCH to update or create resources. It can be dane by clicking on the "Body" tab and choosing the format of the data you're sending in the request body. Common formats include JSON, form-data, x-www-form-urlencoded, and raw text.
+
+---
+Try it yourself.
+
+### EXERCISE 4: **Order a book:**
+Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to create a new order. Remember that this process involves authenticating with an access token and providing necessary order details in JSON format.
+
+### EXERCISE 5: **Order changes:**
+Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to change the customer's name of the first order in "Mario".
+
+### EXERCISE 6: **Delete order:**
+Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to delete the last order submitted.
+
+---
+
+
