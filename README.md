@@ -70,9 +70,7 @@ The main examples of HTTP status codes are:
 ![Http Status Error](https://static.semrush.com/blog/uploads/media/3a/79/3a7950050980a0e2de37bc1a632cc321/original.png)
 
 ---
-This tutorial is designed to provide you with the knowledge and skills necessary to effectively interact with APIs. Throughout this tutorial, you'll gain a solid understanding of the concepts that underpin APIs and learn practical techniques for interacting with them. We'll cover various aspects, from making simple API requests to handling more complex scenarios like authentication, error handling, and data manipulation.
-
-By the end of this journey, you'll be equipped with the tools to confidently communicate with APIs, retrieve and exchange data, and integrate external functionalities into your own projects. 
+This tutorial is designed to provide you with the knowledge and skills necessary to effectively interact with APIs. Throughout this tutorial, you'll gain a solid understanding of the concepts that underpin APIs and learn practical techniques for interacting with them. We'll cover various aspects, from making simple API requests to handling more complex scenarios like authentication, error handling, and data manipulation. By the end of this tutorial, you'll be equipped with the tools to confidently communicate with APIs, retrieve and exchange data, and integrate external functionalities into your own projects. 
 ---
 
 Before delving into the technical details, let's try to understand two fundamental concepts: what an API is and the significance of API testing.
@@ -108,16 +106,23 @@ At its core, Postman offers the following key functionalities:
 7. **API Documentation:** Postman can automatically generate API documentation based on the requests and descriptions provided by users. This documentation is helpful for sharing API information with other developers.
 
 We are going to present each key functionality of Postman throughout the tutorial in order to guide the audience through a comprehensive understanding of Postman's functionalities. 
+
 ---
-## **Making Your First HTTP Request**
+## **Setting Up the Environment**
 
-In this tutorial we will use a simple open-source API to demonstrate the CRUD operations. CRUD stands for Create, Read, Update and Delete. 
-- Create : (Post) Used to create a new resource, but can also modify the underlying state of a system.
-- Read : (Get) Used to retrieve a representation of the resource.
-- Update : (Put/Patch) Update an existing resource.
-- Deleted : (Delete) Delete a resource.
+### **API Selection**
+Throughout the upcoming operations, we will be utilizing a [straightforward open-source API](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md) to illustrate the fundamental CRUD operations. The acronym CRUD encapsulates the essential actions of Create, Read, Update, and Delete:
 
-## Prerequisites 
+- **Create (Post):** This operation is employed to generate new resources or to potentially modify the underlying state of a system.
+
+- **Read (Get):** The Read operation is used to retrieve a representation of a specific resource.
+
+- **Update (Put/Patch):** Through the Update operation, existing resources can be modified or updated.
+
+- **Delete (Delete):** The Delete operation comes into play when the objective is to remove a resource.
+
+### Prerequisites 
+To ensure the accuracy and precision of your actions throughout the tutorial, there are several crucial steps that require your attention:
 * **Installing a Web Browser:** In order to correctly test APIs, download a Web Browser such as Google Chrome
 * **Installing and Configuring Postman:** Here's what you need to do for installing the API testing platform Postman:
 
@@ -125,10 +130,10 @@ In this tutorial we will use a simple open-source API to demonstrate the CRUD op
 
   2. **Sign Up/Login:** Once installed, open Postman. You can sign up for a free account or log in if you already have one. This allows you to sync your work across devices. Postman simplifies API testing by providing a user-friendly interface and a range of features that help you understand and interact with APIs effectively.
 
----
+### **Collection creation in Postman**
+Once you have installed Postman, you can organize your APIs requests into collections. Let's create, thus, a Collection where wi will can save the more usefull requests.
 
-We can start with our tutorial by creating a Collection and some variables where we can save the more usefull requests and information.
-Creating a collection in Postman is a fundamental step in organizing and managing your API requests. A collection is a container that holds a group of requests, allowing you to efficiently organize, execute, and maintain your API tests. Here's how to create a collection in Postman:
+Here's how to create a collection in Postman:
 
 1. **Collections Tab:** In the left sidebar, click on the `Collections` tab. This is where you'll manage your collections.
 
@@ -150,14 +155,48 @@ Creating a collection in Postman is a fundamental step in organizing and managin
 
 5. **Save and Use:** Make sure to save your collection and your requests. You can now use this collection to execute requests, organize your API testing workflow, and collaborate with others.
 
-To create and use a variable, instead, do the following:
+### **Environments in Postman**
+Setting up environments in Postman is a fundamental step that enables you to manage variables and configurations for your requests and tests. Environments allow you to switch between different sets of variables and values easily. 
 
-1. Click on the environment quick look icon located in the workbench.
-2. Next to `Globals`, click on the `Edit` button (or `Add` if no variables are added yet).
-3. Create a variable named `token` and type the value of the obtained token.
-4. Click the `Save` icon, then close the environment tab.
+Here's how to set up an environment in Postman:
 
-In the URL field, you can use variables by using this syntax: {{name_variable}}. For example, if we save the base URL `https://simple-books-api.glitch.me` into the variable `baseUrl`, we can use it in the next requests like this: {{baseUrl}}/endpoint.
+1. **Access Environments:** On the top-right corner of the Postman interface, you'll see an "Environment" dropdown. Click on it to open the environment manager.
+
+2. **Manage Environments:** In the environment manager, you can create, edit, and manage different environments. To get started, click on "Manage Environments."
+
+
+### **Global Variables vs Environment Variables in Postman**
+
+When it comes to creating and utilizing variables in Postman, it's important to understand the distinction between Global Variables and Environment Variables. 
+
+**Global variables**
+Global variables are those variables that are accessible and consistent across all API requests and scripts within a Postman collection. These variables can be defined and set to specific values, and once defined, they can be used in any request, pre-request script, test script, or environment script throughout the entire collection. 
+
+To create and manage global variables in Postman, follow these steps:
+
+1. Click on the environment quick look icon within the workbench.
+2. Adjacent to `Globals`, click the `Edit` button (or `Add` if variables haven't been added yet).
+3. Create a variable named `token` and input the acquired token value.
+4. Click the `Save` icon and then close the environment tab.
+
+**Environment Variables**
+Environment variables in Postman are variables that are specific to a particular environment within a Postman collection. Environment variables are particularly useful when you need to work with different sets of data or configurations based on the environment you are testing in, such as development, testing, or production.
+
+To effectively create and manage environment variables in Postman, follow these straightforward steps:
+
+1. Locate the environment quick look icon within the workbench.
+2. Choose an existing environment from the list or create a new one to suit your needs.
+3. Integrate variables into the environment by assigning names and corresponding values, as previously mentioned.
+
+Within your API requests, you can now employ the variables you've defined in your environment. For instance, in the request URL, reference the value stored in the variable using `{{variable_name}}`.
+
+   - Example URL: `https://api.example.com?key={{apiKey}}`
+
+---
+Try it yourself.
+
+### EXERCISE 0: **Variable creation:**
+Create the variable "baseUrl" with value selected APIs' base URL `https://simple-books-api.glitch.me` in the environment "API testing".
 
 ---
 
