@@ -164,7 +164,6 @@ Here's how to set up an environment in Postman:
 
 2. **Manage Environments:** In the environment manager, you can create, edit, and manage different environments. To get started, click on "Manage Environments."
 
-
 ### **Global Variables vs Environment Variables in Postman**
 
 When it comes to creating and utilizing variables in Postman, it's important to understand the distinction between Global Variables and Environment Variables. 
@@ -199,10 +198,13 @@ Try it yourself.
 Create the variable "baseUrl" with value selected APIs' base URL `https://simple-books-api.glitch.me` in the environment "API testing".
 
 ---
-
+## **API testing with Postman**
+### **Client Keys and Token: user authentication**
 Many APIs require a subscription fee, making it crucial to obtain a personal key or token to access them. Usually, this key is added as a query parameter when interacting with the server.
 
-To utilize these APIs, an access token is necessary. An access token is a string that holds vital credentials and permissions, enabling access to specific resources. The process of obtaining an access token involves user authentication. This authentication is carried out using a POST request, which typically includes login details like username and email in the request body. Through this process, an access token is acquired, enabling subsequent requests for specific resources. Here's how you can retrieve it:
+To utilize the selected [APIs](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), an access token is required. An access token is a string that holds vital credentials and permissions, enabling access to specific resources. The process of obtaining an access token involves user authentication. This authentication is carried out using a POST request, which typically includes login details like username and email in the request body. Through this process, an access token is acquired, enabling subsequent requests for specific resources. 
+
+Here's how you can retrieve it:
 
 1. **Create a New POST Request:**
    - In the request tab, you can provide a suitable name for your request, such as "API Client Registration."
@@ -221,6 +223,7 @@ To utilize these APIs, an access token is necessary. An access token is a string
 ```
 Upon successful registration, the response will provide an access token. This token remains valid for a period of 7 days.
 
+### **GET mathod**
 With the acquired tokend, we're ready to delve into our tutorial. To initiate, let's execute a GET request to the `/status` endpoint.This will help us learn how to perform GET requests and check the current status of the API. 
 
 1. **Create a New Request:**
@@ -231,15 +234,18 @@ With the acquired tokend, we're ready to delve into our tutorial. To initiate, l
   
 If the request succeded, we get the status of the API. At this point, it is important to understand the response from the server.
 
-WIn Postman, when you send requests to APIs, you might encounter different types of responses, including success responses and error responses. These responses are accompanied by status codes, which are standardized numerical codes that provide information about the outcome of the request. Status codes help you understand whether your request was successful or encountered an issue. Here's a brief overview of status codes in Postman:
+### **Understanding responds**
+In Postman, when you send requests to APIs, you might encounter different types of responses, including success responses and error responses. These responses are accompanied by status codes, which are standardized numerical codes that provide information about the outcome of the request. 
 
-1. **Success Response (2xx):** Receiving a `2xx` code (e.g., `200 OK`) denotes a successful request. You'll often find your anticipated data in the response body.
+Here's a brief overview of status codes in Postman:
 
-2. **Client Error (4xx):** A `4xx` code (e.g., `404 Not Found`) signifies a client-side glitch. It might mean the sought-after resource is absent (`404`), or authentication is lacking (`401 Unauthorized`).
+* **Success Response (2xx):** Receiving a `2xx` code (e.g., `200 OK`) denotes a successful request. You'll often find your anticipated data in the response body.
 
-3. **Server Error (5xx):** A `5xx` code (e.g., `500 Internal Server Error`) signals server-side issues. These could stem from misconfigured settings or backend snags.
+* **Client Error (4xx):** A `4xx` code (e.g., `404 Not Found`) signifies a client-side glitch. It might mean the sought-after resource is absent (`404`), or authentication is lacking (`401 Unauthorized`).
 
-4. **Other Codes (1xx, 3xx):** Less frequent, these codes in the `1xx` and `3xx` range have distinct roles in communication and redirection scenarios.
+* **Server Error (5xx):** A `5xx` code (e.g., `500 Internal Server Error`) signals server-side issues. These could stem from misconfigured settings or backend snags.
+
+* **Other Codes (1xx, 3xx):** Less frequent, these codes in the `1xx` and `3xx` range have distinct roles in communication and redirection scenarios.
 
 ---
 Try it yourself.
@@ -249,7 +255,7 @@ Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-p
 
 ---
 
-**Understanding and Utilizing Path Parameters in URLs**
+### **Path Parameters**
 
 Path parameters are a powerful tool for creating dynamic and precise URLs that help you access specific resources. They are variable segments within the path of a URL that enable you to pass dynamic values that act as identifiers for specific resources. 
 
@@ -264,15 +270,15 @@ Working with path parameters becomes remarkably seamless when using tools such a
 
 It's crucial to use the correct path parameter values. If you use the wrong value or format, the server will respond with a "404: Not Found" error. This is because the server cannot locate the resource you're trying to access.
 
-Now, let's put this knowledge into action with an exercise.
+---
+Try it yourself.
 
 ### **Exercise 2: Exploring Book Information**
-
 Refer to the [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md) try to retrieve detailed information about the book with the ID of 2.
 
 --
 
-**Query Parameters:**
+### **Query Parameters:**
 
 Query parameters are additional details you can attach to a URL in Postman. They're key-value pairs that come after a question mark (`?`) in the URL. These parameters customize your API requests by providing extra information to the server.
 
@@ -299,8 +305,7 @@ Assuming you're working with the Book API and you want to retrieve a list of boo
    ```
    https://example-book-api.com/books?genre=thriller&author=Stephen%20King
    ```
-Note that spaces are automatically encoded as `%20` to ensure proper formatting.
-
+   
 ---
 Try it yourself.
 
@@ -309,7 +314,13 @@ Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-p
 
 ---
 
-To conclude, we can send data, such as JSON or form data, to the server by adding a request body to the request. This is often used in HTTP methods like POST, PUT, and PATCH to update or create resources. It can be dane by clicking on the "Body" tab and choosing the format of the data you're sending in the request body. Common formats include JSON, form-data, x-www-form-urlencoded, and raw text.
+### **Data trasmission**
+To conclude, Postman allows us to send data to the server, whether in the form of JSON, form data, or other formats, involves adding a request body to the API request. This functionality is commonly utilized with HTTP methods like POST, PUT, and PATCH, which are employed to either update or create resources on the server. 
+
+The steps to achieve this are as follows:
+
+1. **Access the "Body" Tab:** Within the API request, navigate to the "Body" tab.
+2. **Choose Data Format:** From this tab, you can opt for the appropriate data format that matches the content you're sending in the request body. Common data formats include JSON, form-data, x-www-form-urlencoded, and raw text.
 
 ---
 Try it yourself.
@@ -325,16 +336,16 @@ Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-p
 
 ---
 
-## **Automating Tests in Postman**
+### **Automating Tests in Postman**
 In Postman it is possible to perform tests on software applications, systems, or components by using automated tools and scripts. Test automation is commonly used in software development to ensure the quality, reliability, and efficiency of software products.
 
 **1. Creating Test Scripts:**
 
 Postman allows you to create test scripts for each API request using JavaScript. These scripts are executed after sending a request and can be used to verify the response's correctness, status, and other attributes. Here's how you can create a test script within Postman:
 
-1. **Navigate to "Tests" Tab:** In the request editor, switch to the "Tests" tab. This is where you'll write your test scripts.
+* **Navigate to "Tests" Tab:** In the request editor, switch to the "Tests" tab. This is where you'll write your test scripts.
 
-2. **Write Your Test Script:** Use JavaScript to write your test script. For example, to check the response status code and verify the presence of certain data in the response, you can write:
+* **Write Your Test Script:** Use JavaScript to write your test script. For example, to check the response status code and verify the presence of certain data in the response, you can write:
 
 ```
 // Check response status code
@@ -349,22 +360,22 @@ pm.test("Response body contains expected data", function () {
 });
 ```
 
-3. **Execute the Request:** After writing the test script, you can click the "Send" button to execute the request. Postman will send the request to the API and then run your test scripts to validate the response.
+* **Execute the Request:** After writing the test script, you can click the "Send" button to execute the request. Postman will send the request to the API and then run your test scripts to validate the response.
 
 **2. Chaining Requests:**
 
 Chaining requests in Postman involves using the response from one request as input for subsequent requests. This is useful for scenarios where you need to perform a sequence of API calls. Here's how you can chain requests and automate scenarios:
 
-1. **Create Multiple Requests:** Create the API requests you want to chain. Let's say you have two requests: "Request A" and "Request B".
+* **Create Multiple Requests:** Create the API requests you want to chain. Let's say you have two requests: "Request A" and "Request B".
 
-2. **Reference Response Data:** In "Request A", you can save data from the response using Postman variables. For example, if the response contains an "id" that you want to use in "Request B", you can save it like this in the "Tests" tab of "Request A":
+* **Reference Response Data:** In "Request A", you can save data from the response using Postman variables. For example, if the response contains an "id" that you want to use in "Request B", you can save it like this in the "Tests" tab of "Request A":
 
 ```
 var responseJson = pm.response.json();
 pm.environment.set("savedId", responseJson.id);
 ```
 
-3. **Chaining Requests:** In "Request B", you can reference the saved data in "Request A" using the Postman variable. You might include this variable in the URL or headers, depending on your use case:
+* **Chaining Requests:** In "Request B", you can reference the saved data in "Request A" using the Postman variable. You might include this variable in the URL or headers, depending on your use case:
 
 ```
 // Use the saved ID from Request A
@@ -377,7 +388,7 @@ pm.sendRequest({
 });
 ```
 
-4. **Execute Chained Requests:** When you execute "Request A", the response data is saved to the environment variable. Then, when you execute "Request B", it uses the saved data from the environment variable to build the URL or headers.
+* **Execute Chained Requests:** When you execute "Request A", the response data is saved to the environment variable. Then, when you execute "Request B", it uses the saved data from the environment variable to build the URL or headers.
 
 This way, you can automate scenarios where data from one request is needed in subsequent requests, creating a chain of automated API calls.
 
@@ -390,21 +401,12 @@ Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-p
 
 ---
 
-## **API Documentation**
+### **API Documentation**
+API documentation is a comprehensive set of instructions, guidelines, and information that outlines how to interact with and utilize an API. It serves as a critical resource for developers, partners, and users who wish to understand the functionalities, capabilities, and usage of the API.
 
-Imagine embarking on a journey without a map or clear directions. Similarly, navigating the realm of software development without proper API documentation can leave developers feeling disoriented and frustrated.
+The more popular API documentation tools are Postman API, Swagger, and Stoplight. 
 
-API documentation acts as a guiding light, illuminating the path for developers seeking to interact with an API. It's more than just instructions; it's a comprehensive handbook that unveils the API's endpoints, data structures, authentication methods, and more. Its significance is profound for several reasons.
-
-Primarily, well-documented APIs drastically reduce the learning curve. Developers can swiftly grasp how to make requests, avoiding the frustrating trial-and-error process. This efficiency enables quicker integration and empowers developers to channel their creativity.
-
-Additionally, accurate documentation serves as a shield against errors. Developers can confidently implement API calls, knowing they've interpreted instructions correctly. This clarity enhances the overall reliability of applications.
-
-Moreover, comprehensive API documentation fosters community and collaboration. Developers share insights and best practices, nurturing a culture of mutual learning.
-
-The more popular API documentation tools are Postman API, Swagger, and Stoplight. Let's dive deeper into them.
-
-### **Postman API Documentation:**
+**Postman API Documentation:**
 Postman offers features for easy creating, publishing and sharing comprehensive API documentation.
 
 **Key Features:**
@@ -419,7 +421,7 @@ Postman offers features for easy creating, publishing and sharing comprehensive 
 - Allows real-time testing within the documentation itself.
 - User-friendly interface for creating and managing documentation.
 
-### **Swagger (OpenAPI):**
+**Swagger (OpenAPI):**
 Swagger, now known as OpenAPI, is an open-source specification for designing, documenting, and testing APIs. It provides a standardized way to describe APIs that developers can use to create interactive documentation and generate client SDKs.
 
 **Key Features:**
@@ -433,7 +435,7 @@ Swagger, now known as OpenAPI, is an open-source specification for designing, do
 - Supports a wide range of programming languages and frameworks.
 - Promotes consistency and reduces ambiguity in API communication.
 
-### **Stoplight:**
+**Stoplight:**
 Stoplight is a platform designed to help organizations create, manage, and publish API documentation. It aims to streamline the entire API lifecycle, from design to testing to documentation.
 
 **Key Features:**
