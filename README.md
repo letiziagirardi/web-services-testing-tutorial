@@ -1,6 +1,5 @@
 # Using and Testing Web Services - Tutorial
 
-
 ---
 
 # **Web services**
@@ -70,7 +69,9 @@ The main examples of HTTP status codes are:
 ![Http Status Error](https://static.semrush.com/blog/uploads/media/3a/79/3a7950050980a0e2de37bc1a632cc321/original.png)
 
 ---
+
 This tutorial is designed to provide you with the knowledge and skills necessary to effectively interact with APIs. Throughout this tutorial, you'll gain a solid understanding of the concepts that underpin APIs and learn practical techniques for interacting with them. We'll cover various aspects, from making simple API requests to handling more complex scenarios like authentication, error handling, and data manipulation. By the end of this tutorial, you'll be equipped with the tools to confidently communicate with APIs, retrieve and exchange data, and integrate external functionalities into your own projects. 
+
 ---
 
 Before delving into the technical details, let's try to understand two fundamental concepts: what an API is and the significance of API testing.
