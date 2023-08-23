@@ -276,4 +276,134 @@ Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-p
 
 ---
 
+## **Automating Tests in Postman**
+In Postman it is possible to perform tests on software applications, systems, or components by using automated tools and scripts. Test automation is commonly used in software development to ensure the quality, reliability, and efficiency of software products.
+
+**1. Creating Test Scripts:**
+
+Postman allows you to create test scripts for each API request using JavaScript. These scripts are executed after sending a request and can be used to verify the response's correctness, status, and other attributes. Here's how you can create a test script within Postman:
+
+1. **Navigate to "Tests" Tab:** In the request editor, switch to the "Tests" tab. This is where you'll write your test scripts.
+
+2. **Write Your Test Script:** Use JavaScript to write your test script. For example, to check the response status code and verify the presence of certain data in the response, you can write:
+
+```
+// Check response status code
+pm.test("Status code is 200 OK", function () {
+    pm.response.to.have.status(200);
+});
+
+// Verify presence of specific data in response JSON
+pm.test("Response body contains expected data", function () {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData.key).to.eql("expectedValue");
+});
+```
+
+3. **Execute the Request:** After writing the test script, you can click the "Send" button to execute the request. Postman will send the request to the API and then run your test scripts to validate the response.
+
+**2. Chaining Requests:**
+
+Chaining requests in Postman involves using the response from one request as input for subsequent requests. This is useful for scenarios where you need to perform a sequence of API calls. Here's how you can chain requests and automate scenarios:
+
+1. **Create Multiple Requests:** Create the API requests you want to chain. Let's say you have two requests: "Request A" and "Request B".
+
+2. **Reference Response Data:** In "Request A", you can save data from the response using Postman variables. For example, if the response contains an "id" that you want to use in "Request B", you can save it like this in the "Tests" tab of "Request A":
+
+```
+var responseJson = pm.response.json();
+pm.environment.set("savedId", responseJson.id);
+```
+
+3. **Chaining Requests:** In "Request B", you can reference the saved data in "Request A" using the Postman variable. You might include this variable in the URL or headers, depending on your use case:
+
+```
+// Use the saved ID from Request A
+var savedId = pm.environment.get("savedId");
+
+// Now use this ID in your request URL or headers
+pm.sendRequest({
+    url: "https://api.example.com/resource/" + savedId,
+    method: "GET"
+});
+```
+
+4. **Execute Chained Requests:** When you execute "Request A", the response data is saved to the environment variable. Then, when you execute "Request B", it uses the saved data from the environment variable to build the URL or headers.
+
+This way, you can automate scenarios where data from one request is needed in subsequent requests, creating a chain of automated API calls.
+
+---
+
+### EXERCISE 6: **Delete order:**
+Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), get the book information as follow:
+- Retrieve the id of the book "Just as I Am"
+- Order the book based on the saved variable id
+
+---
+
+## **API Documentation**
+
+Imagine embarking on a journey without a map or clear directions. Similarly, navigating the realm of software development without proper API documentation can leave developers feeling disoriented and frustrated.
+
+API documentation acts as a guiding light, illuminating the path for developers seeking to interact with an API. It's more than just instructions; it's a comprehensive handbook that unveils the API's endpoints, data structures, authentication methods, and more. Its significance is profound for several reasons.
+
+Primarily, well-documented APIs drastically reduce the learning curve. Developers can swiftly grasp how to make requests, avoiding the frustrating trial-and-error process. This efficiency enables quicker integration and empowers developers to channel their creativity.
+
+Additionally, accurate documentation serves as a shield against errors. Developers can confidently implement API calls, knowing they've interpreted instructions correctly. This clarity enhances the overall reliability of applications.
+
+Moreover, comprehensive API documentation fosters community and collaboration. Developers share insights and best practices, nurturing a culture of mutual learning.
+
+The more popular API documentation tools are Postman API, Swagger, and Stoplight. Let's dive deeper into them.
+
+### **Postman API Documentation:**
+Postman offers features for easy creating, publishing and sharing comprehensive API documentation.
+
+**Key Features:**
+- **Auto-generate Documentation:** Postman can generate API documentation directly from the requests and responses you create during testing.
+- **Customizable:** You can edit and enhance the generated documentation with additional information, examples, and explanations.
+- **Interactive Examples:** Documentation includes interactive examples that allow users to make API requests within the documentation itself.
+- **Sharing:** Documentation can be easily shared with team members, stakeholders, and external developers.
+- **Hosted Docs:** Postman provides an option to host API documentation on their servers, ensuring accessibility.
+
+**Advantages:**
+- Seamlessly combines API testing and documentation in one tool.
+- Allows real-time testing within the documentation itself.
+- User-friendly interface for creating and managing documentation.
+
+### **Swagger (OpenAPI):**
+Swagger, now known as OpenAPI, is an open-source specification for designing, documenting, and testing APIs. It provides a standardized way to describe APIs that developers can use to create interactive documentation and generate client SDKs.
+
+**Key Features:**
+- **Standardized Specification:** OpenAPI provides a standardized format for describing API endpoints, parameters, request and response formats, authentication, and more.
+- **Interactive Documentation:** Swagger UI, a tool built on top of OpenAPI, creates interactive and user-friendly API documentation.
+- **Code Generation:** Swagger Codegen can generate client libraries, server stubs, and API documentation from the OpenAPI specification.
+- **API Testing:** Some tools integrate API testing features, allowing you to validate your API against its specification.
+
+**Advantages:**
+- Widely adopted in the industry as a de facto standard for API documentation.
+- Supports a wide range of programming languages and frameworks.
+- Promotes consistency and reduces ambiguity in API communication.
+
+### **Stoplight:**
+Stoplight is a platform designed to help organizations create, manage, and publish API documentation. It aims to streamline the entire API lifecycle, from design to testing to documentation.
+
+**Key Features:**
+- **Visual Design:** Stoplight offers a visual designer for API specifications, making it easier to define endpoints and data models.
+- **Collaboration:** Teams can collaborate on API design, documentation, and testing in real-time.
+- **Mock Servers:** Stoplight can generate mock servers based on your API specification for testing and development.
+- **API Governance:** Provides tools to ensure API design consistency and adherence to company standards.
+
+**Advantages:**
+- Offers an end-to-end solution for the API development process.
+- Encourages collaboration between development, testing, and documentation teams.
+- Provides mock server capabilities for early-stage testing.
+
+
+
+
+
+
+
+
+
 
