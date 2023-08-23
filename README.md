@@ -3,32 +3,32 @@
 
 ---
 
-# **Introduction**
+# **Web services**
 Web services are a fundamental component of modern software architecture that enable different applications or systems to communicate and share data over the internet. They serve as a bridge between various platforms, allowing them to interact with each other regardless of the technologies they are built upon. Web services play a crucial role in enabling interoperability and data exchange in distributed computing environments.
 
 ## **Here are some key characteristics for understanding web services:**
  
-1. **Interoperability:** Web services are designed to work across different programming languages, operating systems, and platforms. This means that applications written in different technologies can communicate seamlessly through web services.
+* **Interoperability:** Web services are designed to work across different programming languages, operating systems, and platforms. This means that applications written in different technologies can communicate seamlessly through web services.
 
-2. **Communication Protocol:** Web services use standardized communication protocols, most commonly HTTP or HTTPS, to exchange data. This makes it easy to transmit data over the internet.
+* **Communication Protocol:** Web services use standardized communication protocols, most commonly HTTP or HTTPS, to exchange data. This makes it easy to transmit data over the internet.
 
-3. **Data Format:** Web services use standard data formats for data exchange, such as XML (eXtensible Markup Language) or JSON (JavaScript Object Notation). These formats ensure that data is structured and can be understood by both the sender and receiver.
+* **Data Format:** Web services use standard data formats for data exchange, such as XML (eXtensible Markup Language) or JSON (JavaScript Object Notation). These formats ensure that data is structured and can be understood by both the sender and receiver.
 
-4. **API (Application Programming Interface):** Web services are often accessed using APIs, which define how different software components should interact with each other. APIs provide a set of functions and protocols for building and integrating software.
+* **API (Application Programming Interface):** Web services are often accessed using APIs, which define how different software components should interact with each other. APIs provide a set of functions and protocols for building and integrating software.
 
-5. **Types of Web Services:** There are different types of web services based on their functionality. These include:
-  - _SOAP (Simple Object Access Protocol):_ SOAP is a structured protocol for exchanging information using XML-based messaging. 
-  - _REST (Representational State Transfer):_ REST is an architectural style that uses standard HTTP methods (GET, POST, PUT, DELETE) to communicate with resources represented by URLs. It's known for its simplicity and scalability.
-  - _GraphQL:_ GraphQL is a query language for APIs that allows clients to request specific data, reducing over-fetching or under-fetching of information.
+* **Types of Web Services:** There are different types of web services based on their functionality. These include:
+  * _SOAP (Simple Object Access Protocol):_ SOAP is a structured protocol for exchanging information using XML-based messaging. 
+  * _REST (Representational State Transfer):_ REST is an architectural style that uses standard HTTP methods (GET, POST, PUT, DELETE) to communicate with resources represented by URLs. It's known for its simplicity and scalability.
+  * _GraphQL:_ GraphQL is a query language for APIs that allows clients to request specific data, reducing over-fetching or under-fetching of information.
 
  
 ## **Why should we use Web Services in Applications?**
   Web services offer several advantages in modern software development:
-  - **Interoperability:** Different applications can communicate seamlessly, regardless of their technology stack.
-  - **Modularity and Reusability:** Web services can be modularized and reused across multiple applications.
-  - **Scalability:** Services can be scaled independently to handle varying levels of demand.
-  - **Platform Independence:** Web services use standardized protocols, making them suitable for cross-platform development.
-  - **Global Accessibility:** Web services can be accessed over the internet, enabling global connectivity.
+  * **Interoperability:** Different applications can communicate seamlessly, regardless of their technology stack.
+  * **Modularity and Reusability:** Web services can be modularized and reused across multiple applications.
+  * **Scalability:** Services can be scaled independently to handle varying levels of demand.
+  * **Platform Independence:** Web services use standardized protocols, making them suitable for cross-platform development.
+  * **Global Accessibility:** Web services can be accessed over the internet, enabling global connectivity.
 
 ---
 
