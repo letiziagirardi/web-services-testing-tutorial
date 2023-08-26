@@ -350,16 +350,19 @@ Try it yourself.
 **EXERCISE 4:** Order a book
 
 Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to create a new order of the book with ID 3. The customer is Luigi. 
+
 [Solution here](solutions/sol_ese4.png)
 
 **EXERCISE 5:** Order changes
 
 Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to change the customer's name of the first order in "Mario".
+
 [Solution here](solutions/sol_ese5.png)
 
 **EXERCISE 6:** Delete order
 
 Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to delete the last order submitted.
+
 [Solution here](solutions/sol_ese6.png)
 
 ---
