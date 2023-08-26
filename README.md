@@ -70,6 +70,7 @@ The main examples of HTTP status codes are:
 
 ---
 
+## **Tutorial Overview**
 This tutorial is designed to provide you with the knowledge and skills necessary to effectively interact with APIs. Throughout this tutorial, you'll gain a solid understanding of the concepts that underpin APIs and learn practical techniques for interacting with them. We'll cover various aspects, from making simple API requests to handling more complex scenarios like authentication, error handling, and data manipulation. By the end of this tutorial, you'll be equipped with the tools to confidently communicate with APIs, retrieve and exchange data, and integrate external functionalities into your own projects. 
 
 ---
@@ -108,10 +109,9 @@ At its core, Postman offers the following key functionalities:
 
 We are going to present each key functionality of Postman throughout the tutorial in order to guide the audience through a comprehensive understanding of Postman's functionalities. 
 
----
-## **Setting Up the Environment**
+### **Setting Up the Environment**
 
-### **API Selection**
+#### **API Selection**
 Throughout the upcoming operations, we will be utilizing a [straightforward open-source API](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md) to illustrate the fundamental CRUD operations. The acronym CRUD encapsulates the essential actions of Create, Read, Update, and Delete:
 
 - **Create (Post):** This operation is employed to generate new resources or to potentially modify the underlying state of a system.
@@ -122,7 +122,7 @@ Throughout the upcoming operations, we will be utilizing a [straightforward open
 
 - **Delete (Delete):** The Delete operation comes into play when the objective is to remove a resource.
 
-### Prerequisites 
+#### Prerequisites 
 To ensure the accuracy and precision of your actions throughout the tutorial, there are several crucial steps that require your attention:
 * **Installing a Web Browser:** In order to correctly test APIs, download a Web Browser such as Google Chrome
 * **Installing and Configuring Postman:** Here's what you need to do for installing the API testing platform Postman:
@@ -131,7 +131,7 @@ To ensure the accuracy and precision of your actions throughout the tutorial, th
 
   2. **Sign Up/Login:** Once installed, open Postman. You can sign up for a free account or log in if you already have one. This allows you to sync your work across devices. Postman simplifies API testing by providing a user-friendly interface and a range of features that help you understand and interact with APIs effectively.
 
-### **Collection creation in Postman**
+#### **Collection creation in Postman**
 Once you have installed Postman, you can organize your APIs requests into collections. Let's create, thus, a Collection where wi will can save the more usefull requests.
 
 Here's how to create a collection in Postman:
@@ -156,7 +156,7 @@ Here's how to create a collection in Postman:
 
 5. **Save and Use:** Make sure to save your collection and your requests. You can now use this collection to execute requests, organize your API testing workflow, and collaborate with others.
 
-### **Environments in Postman**
+#### **Environments in Postman**
 Setting up environments in Postman is a fundamental step that enables you to manage variables and configurations for your requests and tests. Environments allow you to switch between different sets of variables and values easily. 
 
 Here's how to set up an environment in Postman:
@@ -165,11 +165,11 @@ Here's how to set up an environment in Postman:
 
 2. **Manage Environments:** In the environment manager, you can create, edit, and manage different environments. To get started, click on "Manage Environments."
 
-### **Global Variables vs Environment Variables in Postman**
+#### **Global Variables vs Environment Variables in Postman**
 
 When it comes to creating and utilizing variables in Postman, it's important to understand the distinction between Global Variables and Environment Variables. 
 
-**Global variables**
+**Global variables:**
 Global variables are those variables that are accessible and consistent across all API requests and scripts within a Postman collection. These variables can be defined and set to specific values, and once defined, they can be used in any request, pre-request script, test script, or environment script throughout the entire collection. 
 
 To create and manage global variables in Postman, follow these steps:
@@ -179,7 +179,7 @@ To create and manage global variables in Postman, follow these steps:
 3. Create a variable named `token` and input the acquired token value.
 4. Click the `Save` icon and then close the environment tab.
 
-**Environment Variables**
+**Environment Variables:**
 Environment variables in Postman are variables that are specific to a particular environment within a Postman collection. Environment variables are particularly useful when you need to work with different sets of data or configurations based on the environment you are testing in, such as development, testing, or production.
 
 To effectively create and manage environment variables in Postman, follow these straightforward steps:
@@ -195,7 +195,7 @@ Within your API requests, you can now employ the variables you've defined in you
 ---
 Try it yourself.
 
-### EXERCISE 0: **Variable creation:**
+**EXERCISE 0:** Variable creation:
 Create the variable "baseUrl" with value selected APIs' base URL `https://simple-books-api.glitch.me` in the environment "API testing".
 
 ---
@@ -224,7 +224,7 @@ Here's how you can retrieve it:
 ```
 Upon successful registration, the response will provide an access token. This token remains valid for a period of 7 days.
 
-### **GET mathod**
+### **GET method**
 With the acquired tokend, we're ready to delve into our tutorial. To initiate, let's execute a GET request to the `/status` endpoint.This will help us learn how to perform GET requests and check the current status of the API. 
 
 1. **Create a New Request:**
@@ -251,7 +251,7 @@ Here's a brief overview of status codes in Postman:
 ---
 Try it yourself.
 
-### EXERCISE 1: **List Books:**
+**EXERCISE 1:** List Books
 Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to retrieve the list of available books.
 
 ---
@@ -261,6 +261,7 @@ Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-p
 Path parameters are a powerful tool for creating dynamic and precise URLs that help you access specific resources. They are variable segments within the path of a URL that enable you to pass dynamic values that act as identifiers for specific resources. 
 
 To set up a path parameter, you use key-value pairs directly within the URL path. Suppose you are working with an API that provides information about books, and you want to retrieve details about a specific book using its unique ID. Here's how you would structure the URL with a path parameter:
+
 ```
 https://example-book-api.com/books/:bookID
 ```
@@ -274,10 +275,10 @@ It's crucial to use the correct path parameter values. If you use the wrong valu
 ---
 Try it yourself.
 
-### **Exercise 2: Exploring Book Information**
+**Exercise 2:** Exploring Book Information
 Refer to the [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md) try to retrieve detailed information about the book with the ID of 2.
 
---
+---
 
 ### **Query Parameters:**
 
@@ -310,7 +311,7 @@ Assuming you're working with the Book API and you want to retrieve a list of boo
 ---
 Try it yourself.
 
-### EXERCISE 3: **List Books:**
+**EXERCISE 3:** List Books
 Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to retrieve the list of available books of non-fiction genre.
 
 ---
@@ -326,13 +327,13 @@ The steps to achieve this are as follows:
 ---
 Try it yourself.
 
-### EXERCISE 4: **Order a book:**
+**EXERCISE 4:** Order a book
 Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to create a new order. Remember that this process involves authenticating with an access token and providing necessary order details in JSON format.
 
-### EXERCISE 5: **Order changes:**
+**EXERCISE 5:** Order changes
 Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to change the customer's name of the first order in "Mario".
 
-### EXERCISE 6: **Delete order:**
+**EXERCISE 6:** Delete order
 Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to delete the last order submitted.
 
 ---
@@ -396,7 +397,7 @@ This way, you can automate scenarios where data from one request is needed in su
 ---
 Try it yourself.
 
-### EXERCISE 7: **Delete order:**
+**EXERCISE 7:** Delete order
 Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), get the book information as follow:
 - Retrieve the id of the book "Just as I Am"
 - Order the book based on the saved variable id
@@ -513,7 +514,7 @@ def test_get_book_details(book_id):
 ---
 Try it yourself.
 
-### **Exercise 8: Exploring Book Information**
+**Exercise 8:** Exploring Book Information
 Refer to the [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md) try to:
 * Handle Invalid Book IDs: write a test to verify the behavior when using an invalid book ID (e.g., 0, -1) with the "https://simple-books-api.glitch.me/books/:bookID" endpoint. Assert that the response status code is 404 (Not Found).
 * Test Submitting an order: write a test to verify the behavior when submitting a new order using the "https://simple-books-api.glitch.me/orders" endpoint.
