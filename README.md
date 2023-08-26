@@ -393,8 +393,9 @@ pm.sendRequest({
 This way, you can automate scenarios where data from one request is needed in subsequent requests, creating a chain of automated API calls.
 
 ---
+Try it yourself.
 
-### EXERCISE 6: **Delete order:**
+### EXERCISE 7: **Delete order:**
 Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), get the book information as follow:
 - Retrieve the id of the book "Just as I Am"
 - Order the book based on the saved variable id
@@ -511,7 +512,7 @@ def test_get_book_details(book_id):
 ---
 Try it yourself.
 
-### **Exercise 2: Exploring Book Information**
+### **Exercise 8: Exploring Book Information**
 Refer to the [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md) try to:
 * Handle Invalid Book IDs: write a test to verify the behavior when using an invalid book ID (e.g., 0, -1) with the "https://simple-books-api.glitch.me/books/:bookID" endpoint. Assert that the response status code is 404 (Not Found).
 * Test Submitting an order: write a test to verify the behavior when submitting a new order using the "https://simple-books-api.glitch.me/orders" endpoint.
