@@ -400,61 +400,125 @@ Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-p
 - Order the book based on the saved variable id
 
 ---
+### **API testing with Python**
+API testing can be done in various programming languages, but some languages are more commonly used due to their libraries, frameworks, and ease of use. Python is a highly popular choice for API testing due to its simplicity and rich ecosystem of libraries. The `requests` library makes it easy to send HTTP requests and handle responses. Testing frameworks like `unittest`, `pytest`, and `nose` provide structured testing capabilities. In tis tutorial we will focus on pytest.
 
-### **API Documentation**
-API documentation is a comprehensive set of instructions, guidelines, and information that outlines how to interact with and utilize an API. It serves as a critical resource for developers, partners, and users who wish to understand the functionalities, capabilities, and usage of the API.
-
-The more popular API documentation tools are Postman API, Swagger, and Stoplight. 
-
-**Postman API Documentation:**
-Postman offers features for easy creating, publishing and sharing comprehensive API documentation.
-
-**Key Features:**
-- **Auto-generate Documentation:** Postman can generate API documentation directly from the requests and responses you create during testing.
-- **Customizable:** You can edit and enhance the generated documentation with additional information, examples, and explanations.
-- **Interactive Examples:** Documentation includes interactive examples that allow users to make API requests within the documentation itself.
-- **Sharing:** Documentation can be easily shared with team members, stakeholders, and external developers.
-- **Hosted Docs:** Postman provides an option to host API documentation on their servers, ensuring accessibility.
-
-**Advantages:**
-- Seamlessly combines API testing and documentation in one tool.
-- Allows real-time testing within the documentation itself.
-- User-friendly interface for creating and managing documentation.
-
-**Swagger (OpenAPI):**
-Swagger, now known as OpenAPI, is an open-source specification for designing, documenting, and testing APIs. It provides a standardized way to describe APIs that developers can use to create interactive documentation and generate client SDKs.
-
-**Key Features:**
-- **Standardized Specification:** OpenAPI provides a standardized format for describing API endpoints, parameters, request and response formats, authentication, and more.
-- **Interactive Documentation:** Swagger UI, a tool built on top of OpenAPI, creates interactive and user-friendly API documentation.
-- **Code Generation:** Swagger Codegen can generate client libraries, server stubs, and API documentation from the OpenAPI specification.
-- **API Testing:** Some tools integrate API testing features, allowing you to validate your API against its specification.
-
-**Advantages:**
-- Widely adopted in the industry as a de facto standard for API documentation.
-- Supports a wide range of programming languages and frameworks.
-- Promotes consistency and reduces ambiguity in API communication.
-
-**Stoplight:**
-Stoplight is a platform designed to help organizations create, manage, and publish API documentation. It aims to streamline the entire API lifecycle, from design to testing to documentation.
-
-**Key Features:**
-- **Visual Design:** Stoplight offers a visual designer for API specifications, making it easier to define endpoints and data models.
-- **Collaboration:** Teams can collaborate on API design, documentation, and testing in real-time.
-- **Mock Servers:** Stoplight can generate mock servers based on your API specification for testing and development.
-- **API Governance:** Provides tools to ensure API design consistency and adherence to company standards.
-
-**Advantages:**
-- Offers an end-to-end solution for the API development process.
-- Encourages collaboration between development, testing, and documentation teams.
-- Provides mock server capabilities for early-stage testing.
+Here's a guide on how to use and test APIs in Python.
 
 
+1. **Install Required Libraries**:
+   For testing the APIs, you might need additional libraries. For example, the `requests` library for making HTTP requests.
 
+   ```
+   pip install pytest requests
 
+   ```
 
+2. **Make API Requests**:
+   Use the `requests.get()` or other appropriate methods to make API requests. Here an example. 
 
+   ```
+   import requests
+   
+   # Define the URL
+   url = "https://simple-books-api.glitch.me/status"
+   
+   # Make the GET request
+   response = requests.get(url)
 
+   # Check the response status code
+   if response.status_code == 200:
+      data = response.json()
+      print("API response data:")
+      print(data)
+   else:
+      print("API request failed with status code:", response.status_code)
+   ```
+
+3. **Handle Responses**:
+   Parse and process the responses based on the API's data format (usually JSON). Perform error handling and validation as needed.
+
+**Testing Web Services**
+
+1. **Choose a Testing Framework**:
+   Select a testing framework such as `unittest`, `pytest`, or `nose` for structuring and running your tests. We have chosen pytest.
+
+2. **Create Test Cases**:
+   Write test cases to cover different scenarios. If you want to use pytest to test the code in your test.py file, you need to wrap the code within a test function and include assertions to check the behavior of the code. pytest uses a specific naming convention to identify test functions. By default, it looks for functions that start with test_. In this example, the code has been encapsulated within the test_status_api_request function, which follows the naming convention required by pytest. 
+
+Here an example of how you could structure the code as a pytest test:
+
+   ```
+   import requests
+
+   def test_status_api_request():
+    # Define the URL and optional parameters
+    url = "https://simple-books-api.glitch.me/status"
+    params = {"param1": "value1", "param2": "value2"}
+
+    # Make the GET request
+    response = requests.get(url, params=params)
+
+    # Check the response status code
+    assert response.status_code == 200
+
+    # Convert JSON response to Python data
+    data = response.json()
+
+    # Check if the expected key is in the response data
+    assert "status" in data
+    assert data["status"] == "OK"
+
+    print("API response data:")
+    print(data)
+
+   ```
+
+4. **Running Tests**:
+   For running the test, you can simply run
+
+   ```
+   pytest -v test.py
+   ```
+
+**Parameterized Testing with pytest**
+
+`pytest` also supports parameterized testing using the `@pytest.mark.parametrize` decorator. This allows you to run the same test function with different sets of inputs. Here's an example of parameterized test for retrieving book details with different IDs. 
+
+```
+import requests
+import pytest
+
+BASE_URL = "https://simple-books-api.glitch.me"
+
+@pytest.mark.parametrize("book_id", [1, 2, 3, 4, 5, 6])
+def test_get_book_details(book_id):
+
+    url = f"{BASE_URL}/books/{book_id}"
+    response = requests.get(url)
+
+    assert response.status_code == 200
+    data = response.json()
+    assert "id" in data
+    assert "name" in data
+    assert "type" in data
+    assert "available" in data
+
+    print("API response data:")
+    print(data)
+
+```
+---
+Try it yourself.
+
+### **Exercise 2: Exploring Book Information**
+Refer to the [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md) try to:
+* Handle Invalid Book IDs: write a test to verify the behavior when using an invalid book ID (e.g., 0, -1) with the "https://simple-books-api.glitch.me/books/:bookID" endpoint. Assert that the response status code is 404 (Not Found).
+* Test Submitting an order: write a test to verify the behavior when submitting a new order using the "https://simple-books-api.glitch.me/orders" endpoint.
+  * Prepare the request body in JSON format. The body should include the properties "bookId" (integer) and "customerName" (string).
+  * Add the required authentication header using a token. 
+  * Use the requests.post method to send the POST request.
+  * Assert that the response status code is 200 (OK), indicating a successful order submission.
 
 
 
