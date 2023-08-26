@@ -202,6 +202,8 @@ Try it yourself.
 **EXERCISE 0:** Variable creation:
 Create the variable "baseUrl" with value selected APIs' base URL `https://simple-books-api.glitch.me` in the environment "API testing".
 
+![Solution here](solutions/sol_ese0.png)
+
 ---
 ## **API testing with Postman**
 ### **Client Keys and Token: user authentication**
@@ -262,6 +264,8 @@ Try it yourself.
 **EXERCISE 1:** List Books
 Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to retrieve the list of available books.
 
+![Solution here](solutions/sol_ese1.png)
+
 ---
 
 ### **Path Parameters**
@@ -285,6 +289,8 @@ Try it yourself.
 
 **Exercise 2:** Exploring Book Information
 Refer to the [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md) try to retrieve detailed information about the book with the ID of 2.
+
+![Solution here](solutions/sol_ese2.png)
 
 ---
 
@@ -322,6 +328,8 @@ Try it yourself.
 **EXERCISE 3:** List Books
 Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to retrieve the list of non-fiction books.
 
+![Solution here](solutions/sol_ese3.png)
+
 ---
 
 ### **Data trasmission**
@@ -337,12 +345,15 @@ Try it yourself.
 
 **EXERCISE 4:** Order a book
 Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to create a new order of the book with ID 3. The customer is Luigi. 
+![Solution here](solutions/sol_ese4.png)
 
 **EXERCISE 5:** Order changes
 Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to change the customer's name of the first order in "Mario".
+![Solution here](solutions/sol_ese5.png)
 
 **EXERCISE 6:** Delete order
 Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to delete the last order submitted.
+![Solution here](solutions/sol_ese6.png)
 
 ---
 
@@ -398,6 +409,8 @@ Try it yourself.
 Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), get the book information as follow:
 - Retrieve and save in the current environment the id of the first fiction book of the book list
 - Order the book based on the saved variable id
+  
+![Solution here](solutions/sol_ese7a.png)
 
 ---
 ### **API testing with Python**
