@@ -1,3 +1,4 @@
+# SOLUTION EXERCISE 8
 import requests
 import pytest
 import json
