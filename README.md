@@ -3,6 +3,7 @@
 ---
 
 # **Web services**
+## **What are Web services?**
 Web services are a fundamental component of modern software architecture that enable different applications or systems to communicate and share data over the internet. They serve as a bridge between various platforms, allowing them to interact with each other regardless of the technologies they are built upon. Web services play a crucial role in enabling interoperability and data exchange in distributed computing environments.
 
 Here are some key characteristics for understanding web services:
@@ -35,32 +36,32 @@ In our tutorial, we will focus on REST architecture because it simplifies the in
 
 RESTful communication relies on a client-server model where clients, often web browsers or applications, initiate requests to servers. These requests carry specific HTTP methods that define the desired action. Servers, in response, provide well-structured data, often in formats like JSON or XML, ensuring seamless interpretation by the client.
 
-**Decoding Interaction: HTTP Status Codes**
+### **Decoding Interaction: HTTP Status Codes**
 
 In this symbiotic communication between clients and servers, the language of HTTP status codes allows to convey the outcomes of each interaction.
 The main examples of HTTP status codes are:
 
-**1. Informational Responses (1xx):**
+* **Informational Responses (1xx):**
    - **100 Continue:** Acknowledgment of the initial request, indicating the server's readiness for further data transmission.
 
-**2. Successful Responses (2xx):**
+* **Successful Responses (2xx):**
    - **200 OK:** Successful processing of the request, with the server delivering the desired data in the response body.
    - **201 Created:** The request leads to the establishment of a new resource on the server.
    - **204 No Content:** Although successful, no data needs to be included in the response body.
 
-**3. Redirection Responses (3xx):**
+* **Redirection Responses (3xx):**
    - **301 Moved Permanently:** The requested resource has undergone a permanent relocation to a new URL.
    - **302 Found (or 303 See Other):** Temporary redirection to a different URL for the requested resource.
    - **304 Not Modified:** The client's cached resource version remains valid, resulting in a response without re-transmission.
 
-**4. Client Error Responses (4xx):**
+* **Client Error Responses (4xx):**
    - **400 Bad Request:** The server struggles to comprehend the client's request due to errors or malformed syntax.
    - **401 Unauthorized:** Access requires valid authentication credentials.
    - **403 Forbidden:** Authenticated client lacks the necessary permissions to access the resource.
    - **404 Not Found:** The requested resource is absent on the server.
    - **405 Method Not Allowed:** The requested HTTP method is incompatible with the resource.
 
-**5. Server Error Responses (5xx):**
+* **Server Error Responses (5xx):**
    - **500 Internal Server Error:** Unforeseen server error disrupts the request fulfillment.
    - **501 Not Implemented:** The server lacks the functionality to fulfill the request.
    - **503 Service Unavailable:** Temporary server unavailability due to maintenance or overload.
