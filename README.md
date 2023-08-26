@@ -156,6 +156,8 @@ Here's how to create a collection in Postman:
 
 5. **Save and Use:** Make sure to save your collection and your requests. You can now use this collection to execute requests, organize your API testing workflow, and collaborate with others.
 
+![collection](https://github.com/letiziagirardi/web-services-testing-tutorial/assets/71395970/7f192db3-c102-49ef-a5e6-afec2dfd52ad)
+
 #### **Environments in Postman**
 Setting up environments in Postman is a fundamental step that enables you to manage variables and configurations for your requests and tests. Environments allow you to switch between different sets of variables and values easily. 
 
@@ -176,8 +178,10 @@ To create and manage global variables in Postman, follow these steps:
 
 1. Click on the environment quick look icon within the workbench.
 2. Adjacent to `Globals`, click the `Edit` button (or `Add` if variables haven't been added yet).
-3. Create a variable named `token` and input the acquired token value.
+3. Create a variable named `token` and input the acquired token value. Wait for the API user's registration step in order to get the real access token value to insert.
 4. Click the `Save` icon and then close the environment tab.
+
+![globalVar](https://github.com/letiziagirardi/web-services-testing-tutorial/assets/71395970/6ceba406-e1ee-4700-90d4-2bf2be2cde9b)
 
 **Environment Variables:**
 Environment variables in Postman are variables that are specific to a particular environment within a Postman collection. Environment variables are particularly useful when you need to work with different sets of data or configurations based on the environment you are testing in, such as development, testing, or production.
@@ -224,6 +228,8 @@ Here's how you can retrieve it:
 ```
 Upon successful registration, the response will provide an access token. This token remains valid for a period of 7 days.
 
+![registration](https://github.com/letiziagirardi/web-services-testing-tutorial/assets/71395970/ad7f8539-8d6a-47dc-b6be-f3c469e00bcc)
+
 ### **GET method**
 With the acquired tokend, we're ready to delve into our tutorial. To initiate, let's execute a GET request to the `/status` endpoint.This will help us learn how to perform GET requests and check the current status of the API. 
 
@@ -234,6 +240,8 @@ With the acquired tokend, we're ready to delve into our tutorial. To initiate, l
    - Enter the URL for the API endpoint you want to query. In this case, it's `{{baseUrl}}/status`.
   
 If the request succeded, we get the status of the API. At this point, it is important to understand the response from the server.
+
+![getMethod](https://github.com/letiziagirardi/web-services-testing-tutorial/assets/71395970/e5098c07-3fc6-4f7b-8b4c-1a806c229524)
 
 ### **Understanding responds**
 In Postman, when you send requests to APIs, you might encounter different types of responses, including success responses and error responses. These responses are accompanied by status codes, which are standardized numerical codes that provide information about the outcome of the request. 
@@ -312,7 +320,7 @@ Assuming you're working with the Book API and you want to retrieve a list of boo
 Try it yourself.
 
 **EXERCISE 3:** List Books
-Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to retrieve the list of available books of non-fiction genre.
+Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to retrieve the list of non-fiction books.
 
 ---
 
@@ -328,7 +336,7 @@ The steps to achieve this are as follows:
 Try it yourself.
 
 **EXERCISE 4:** Order a book
-Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to create a new order. Remember that this process involves authenticating with an access token and providing necessary order details in JSON format.
+Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to create a new order of the book with ID 3. The customer is Luigi. 
 
 **EXERCISE 5:** Order changes
 Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), try to change the customer's name of the first order in "Mario".
@@ -373,22 +381,11 @@ Chaining requests in Postman involves using the response from one request as inp
 * **Reference Response Data:** In "Request A", you can save data from the response using Postman variables. For example, if the response contains an "id" that you want to use in "Request B", you can save it like this in the "Tests" tab of "Request A":
 
 ```
-var responseJson = pm.response.json();
-pm.environment.set("savedId", responseJson.id);
+const jsonData = JSON.parse(responseBody);         // Take the response body
+postman.setEnvironmentVariable("savedId", jsonData.id); // Where savedId is a response field
 ```
 
-* **Chaining Requests:** In "Request B", you can reference the saved data in "Request A" using the Postman variable. You might include this variable in the URL or headers, depending on your use case:
-
-```
-// Use the saved ID from Request A
-var savedId = pm.environment.get("savedId");
-
-// Now use this ID in your request URL or headers
-pm.sendRequest({
-    url: "https://api.example.com/resource/" + savedId,
-    method: "GET"
-});
-```
+* **Chaining Requests:** In "Request B", you can reference the saved data in "Request A" using the Postman variable. You might include this variable in the URL.
 
 * **Execute Chained Requests:** When you execute "Request A", the response data is saved to the environment variable. Then, when you execute "Request B", it uses the saved data from the environment variable to build the URL or headers.
 
@@ -399,7 +396,7 @@ Try it yourself.
 
 **EXERCISE 7:** Delete order
 Looking at [Book APIs documentation](https://github.com/vdespa/introduction-to-postman-course/blob/main/simple-books-api.md), get the book information as follow:
-- Retrieve the id of the book "Just as I Am"
+- Retrieve and save in the current environment the id of the first fiction book of the book list
 - Order the book based on the saved variable id
 
 ---
